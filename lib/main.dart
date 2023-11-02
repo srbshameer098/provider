@@ -97,65 +97,233 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             const Text(
-              ' pushed the button  many times:',
+              'Calculater',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
                 color: Colors.black
               ),
             ),
             Center(
-              child: Consumer<A>(
-                  builder: (BuildContext context, value, Widget? child) {
-                return Container(
-                  width: 100,
-                  height: 50,
+              child: Padding(
+                padding:  EdgeInsets.only(top: 50),
+                child: Container(
+                  width: 330,
+                  height: 70,
                   decoration:
-                    BoxDecoration(
-                      color: Colors.grey,
-                        borderRadius: BorderRadius.circular(14),
+                  BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                  child: Center(
-                    child: Text(value. counter.toString(),
-                    style: TextStyle(
-                      fontSize: 35,
-                    ),
-                    ),
-                  ),
-                );
-              }),
+
+                  child: Consumer<A>(
+                      builder: (BuildContext context, value, Widget? child) {
+                    return Container(
+                      width: 100,
+                      height: 50,
+                      decoration:
+                        BoxDecoration(
+                          color: Colors.grey,
+                            borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Center(
+                        child: Text(value. counter.toString(),
+                        style: TextStyle(
+                          fontSize: 35,
+                        ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: Row(
-        children:[ Padding(
-          padding: EdgeInsets.only(left: 85,bottom: 295),
-          child: FloatingActionButton(
-            onPressed: () {
-              Provider.of<A>(context, listen: false).changeValue();
-            },
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
+      floatingActionButton: Column(crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children:[ Padding(
+              padding: EdgeInsets.only(left: 55,top: 290),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Provider.of<A>(context, listen: false).changeValue();
+                },
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
 
-             ),
-        ),
-
-          Padding(
-            padding:EdgeInsets.only(left: 110,bottom: 295),
-            child: FloatingActionButton(
-              onPressed: () {
-                Provider.of<A>(context, listen: false).changeValue1();
-              },
-              tooltip: 'Decrement',
-              child: const Icon(Icons.minimize),
-
+                 ),
             ),
-          ),
+
+              Padding(
+                padding:EdgeInsets.only(left: 20,top: 290),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).changeValue1();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.minimize),
+
+
+
+                ),
+              ),
+
+
+              Padding(
+                padding:EdgeInsets.only(left: 20,top: 290),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).changeValue1();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.close_rounded),
+
+
+
+                ),
+              ),
+              Padding(
+                padding:EdgeInsets.only(left: 20,top: 290),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).changeValue1();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Text('/'),
+
+
+
+                ),
+              ),
 
      ] ),
+
+
+          Row(
+              children:[ Padding(
+                padding: EdgeInsets.only(left: 55,top: 290),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).changeValue();
+                  },
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
+
+                ),
+              ),
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+              ] ),
+
+          Row(
+              children:[ Padding(
+                padding: EdgeInsets.only(left: 55,top: 290),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).changeValue();
+                  },
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
+
+                ),
+              ),
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 290),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.minimize),
+
+
+
+                  ),
+                ),
+
+              ] ),
+
+
+        ],
+      ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
     );
