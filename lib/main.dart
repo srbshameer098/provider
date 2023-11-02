@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => A(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Flutter Provider',
         theme: ThemeData(
           // This is the theme of your application.
           //
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const MyHomePage(title: 'Flutter provider'),
       ),
     );
   }
@@ -100,12 +100,31 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              ' pushed the button  many times:',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black
+              ),
             ),
             Center(
               child: Consumer<A>(
                   builder: (BuildContext context, value, Widget? child) {
-                return Text(value. counter.toString());
+                return Container(
+                  width: 100,
+                  height: 50,
+                  decoration:
+                    BoxDecoration(
+                      color: Colors.grey,
+                        borderRadius: BorderRadius.circular(14),
+                  ),
+                  child: Center(
+                    child: Text(value. counter.toString(),
+                    style: TextStyle(
+                      fontSize: 35,
+                    ),
+                    ),
+                  ),
+                );
               }),
             ),
           ],
@@ -113,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: Row(
         children:[ Padding(
-          padding: EdgeInsets.only(left: 30),
+          padding: EdgeInsets.only(left: 85,bottom: 295),
           child: FloatingActionButton(
             onPressed: () {
               Provider.of<A>(context, listen: false).changeValue();
@@ -125,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
 
           Padding(
-            padding:EdgeInsets.only(left: 215),
+            padding:EdgeInsets.only(left: 110,bottom: 295),
             child: FloatingActionButton(
               onPressed: () {
                 Provider.of<A>(context, listen: false).changeValue1();
