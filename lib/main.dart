@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled3/provider.dart';
 import 'package:untitled3/provider.dart';
+import 'package:flutter_simple_calculator/flutter_simple_calculator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,6 +11,18 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
+
+
+  // int firstNum;
+  // int secondNum;
+  // String textToDispaly;
+  // String res;
+  // String opreation;
+
+  void btnOnClick(String btnVal){
+    print(btnVal);
+  }
 
   // This widget is the root of your application.
   @override
@@ -61,9 +75,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    print("rebuilded");
+     print("rebuilded");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -109,9 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: Padding(
                 padding:  EdgeInsets.only(top: 50),
-                child: Container(
+                child: Container(alignment:const Alignment (1.0,1.0),
                   width: 330,
-                  height: 70,
+                  height: 100,
                   decoration:
                   BoxDecoration(
                     color: Colors.black,
@@ -120,20 +137,61 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   child: Consumer<A>(
                       builder: (BuildContext context, value, Widget? child) {
-                    return Container(
+                    return
+                      Container(alignment:const Alignment (1.0,1.0),
                       width: 100,
                       height: 50,
                       decoration:
                         BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.transparent,
                             borderRadius: BorderRadius.circular(14),
                       ),
-                      child: Center(
-                        child: Text(value. counter.toString(),
-                        style: TextStyle(
-                          fontSize: 35,
-                        ),
-                        ),
+                      child: Column(
+                        children:[
+                        // Text(value. counter.toString(),
+                        // style: const TextStyle(
+                        //   fontSize: 35,
+                        //   color: Colors.white
+                        // ),
+                        // ),
+                          CalcButton(),
+
+    //                     var calc = SimpleCalculator(
+    //                     value: _currentValue!,
+    //                     hideExpression: false,
+    //                     hideSurroundingBorder: true,
+    //                     autofocus: true,
+    //                     onChanged: (key, value, expression) {
+    //                     setState(() {
+    //                     _currentValue = value ?? 0;
+    //                     });
+    // if (kDebugMode) {
+    // print('$key\t$value\t$expression');
+    // }
+    // },
+    // onTappedDisplay: (value, details) {
+    // if (kDebugMode) {
+    // print('$value\t${details.globalPosition}');
+    // }
+    // },
+    // theme: const CalculatorThemeData(
+    // borderColor: Colors.black,
+    // borderWidth: 2,
+    // displayColor: Colors.black,
+    // displayStyle: TextStyle(fontSize: 80, color: Colors.yellow),
+    // expressionColor: Colors.indigo,
+    // expressionStyle: TextStyle(fontSize: 20, color: Colors.white),
+    // operatorColor: Colors.pink,
+    // operatorStyle: TextStyle(fontSize: 30, color: Colors.white),
+    // commandColor: Colors.orange,
+    // commandStyle: TextStyle(fontSize: 30, color: Colors.white),
+    // numColor: Colors.grey,
+    // numStyle: TextStyle(fontSize: 50, color: Colors.white),
+    // ),
+    //                     ),
+    //                     );
+
+                        ]
                       ),
                     );
                   }),
@@ -147,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Row(
             children:[ Padding(
-              padding: EdgeInsets.only(left: 55,top: 290),
+              padding: EdgeInsets.only(left: 55,top: 355),
               child: FloatingActionButton(
                 onPressed: () {
                   Provider.of<A>(context, listen: false).changeValue();
@@ -159,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
               Padding(
-                padding:EdgeInsets.only(left: 20,top: 290),
+                padding:EdgeInsets.only(left: 20,top: 355),
                 child: FloatingActionButton(
                   onPressed: () {
                     Provider.of<A>(context, listen: false).changeValue1();
@@ -174,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
               Padding(
-                padding:EdgeInsets.only(left: 20,top: 290),
+                padding:EdgeInsets.only(left: 20,top: 355),
                 child: FloatingActionButton(
                   onPressed: () {
                     Provider.of<A>(context, listen: false).changeValue1();
@@ -187,13 +245,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding:EdgeInsets.only(left: 20,top: 290),
+                padding:EdgeInsets.only(left: 20,top: 355),
                 child: FloatingActionButton(
                   onPressed: () {
                     Provider.of<A>(context, listen: false).changeValue1();
                   },
                   tooltip: 'Decrement',
-                  child: const Text('/'),
+                  child: const Text('/',
+                  style: TextStyle(
+
+                    fontSize: 20
+
+                  ),
+                  ),
 
 
 
@@ -205,25 +269,37 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Row(
               children:[ Padding(
-                padding: EdgeInsets.only(left: 55,top: 290),
+                padding: EdgeInsets.only(left: 55,top: 20),
                 child: FloatingActionButton(
                   onPressed: () {
-                    Provider.of<A>(context, listen: false).changeValue();
+                    Provider.of<A>(context, listen: false).button7();
                   },
                   tooltip: 'Increment',
-                  child: const Icon(Icons.add),
+                  child: const Text('7',
+                    style: TextStyle(
+
+                        fontSize: 20
+
+                    ),
+                  ),
 
                 ),
               ),
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Provider.of<A>(context, listen: false).changeValue1();
+                      Provider.of<A>(context, listen: false).button8();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('8',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
 
 
 
@@ -232,13 +308,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Provider.of<A>(context, listen: false).changeValue1();
+                      Provider.of<A>(context, listen: false).button9();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('9',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
 
 
 
@@ -247,13 +329,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
                       Provider.of<A>(context, listen: false).changeValue1();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('%',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
 
 
 
@@ -264,25 +352,37 @@ class _MyHomePageState extends State<MyHomePage> {
 
           Row(
               children:[ Padding(
-                padding: EdgeInsets.only(left: 55,top: 290),
+                padding: EdgeInsets.only(left: 55,top: 20),
                 child: FloatingActionButton(
                   onPressed: () {
-                    Provider.of<A>(context, listen: false).changeValue();
+                    Provider.of<A>(context, listen: false).button4();
                   },
                   tooltip: 'Increment',
-                  child: const Icon(Icons.add),
+                  child: const Text('4',
+                    style: TextStyle(
+
+                        fontSize: 20
+
+                    ),
+                  ),
 
                 ),
               ),
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Provider.of<A>(context, listen: false).changeValue1();
+                      Provider.of<A>(context, listen: false).button5();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('5',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
 
 
 
@@ -291,13 +391,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Provider.of<A>(context, listen: false).changeValue1();
+                      Provider.of<A>(context, listen: false).button6();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('6',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
 
 
 
@@ -306,13 +412,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
                 Padding(
-                  padding:EdgeInsets.only(left: 20,top: 290),
+                  padding:EdgeInsets.only(left: 20,top: 20),
                   child: FloatingActionButton(
                     onPressed: () {
-                      Provider.of<A>(context, listen: false).changeValue1();
+                      Provider.of<A>(context, listen: false).buttonc();
                     },
                     tooltip: 'Decrement',
-                    child: const Icon(Icons.minimize),
+                    child: const Text('C',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+
+                      ),
+                    ),
 
 
 
@@ -322,10 +435,232 @@ class _MyHomePageState extends State<MyHomePage> {
               ] ),
 
 
+          Row(
+              children:[ Padding(
+                padding: EdgeInsets.only(left: 55,top: 20),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).button1();
+                  },
+                  tooltip: 'Increment',
+                  child: Text('1',
+                    style: TextStyle(
+
+                        fontSize: 20
+
+                    ),
+                  ),
+
+                ),
+              ),
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).button2();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Text('2',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).button3();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Text('3',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Icon(Icons.arrow_back),
+
+
+
+                  ),
+                ),
+
+              ] ),
+
+
+          Row(
+              children:[ Padding(
+                padding: EdgeInsets.only(left: 55,top: 20),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Provider.of<A>(context, listen: false).button0();
+                  },
+                  tooltip: 'Increment',
+                  child: Text('0',
+                    style: TextStyle(
+
+                        fontSize: 20
+
+                    ),
+                  ),
+
+                ),
+              ),
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).button00();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Text('00',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).buttondot();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Text('.',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
+
+
+
+                  ),
+                ),
+
+
+                Padding(
+                  padding:EdgeInsets.only(left: 20,top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Provider.of<A>(context, listen: false).changeValue1();
+                    },
+                    tooltip: 'Decrement',
+                    child: const Text('=',
+                      style: TextStyle(
+
+                          fontSize: 20
+
+                      ),
+                    ),
+
+
+
+                  ),
+                ),
+
+              ] ),
+
         ],
       ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+
+class CalcButtonState extends State<CalcButton> {
+  double? _currentValue = 0;
+  @override
+  Widget build(BuildContext context) {
+    var calc = SimpleCalculator(
+      value: _currentValue!,
+      hideExpression: false,
+      hideSurroundingBorder: true,
+      autofocus: true,
+      onChanged: (key, value, expression) {
+        setState(() {
+          _currentValue = value ?? 0;
+        });
+        if (kDebugMode) {
+          print('$key\t$value\t$expression');
+        }
+      },
+      onTappedDisplay: (value, details) {
+        if (kDebugMode) {
+          print('$value\t${details.globalPosition}');
+        }
+      },
+      theme: const CalculatorThemeData(
+        borderColor: Colors.black,
+        borderWidth: 2,
+        displayColor: Colors.black,
+        displayStyle: TextStyle(fontSize: 80, color: Colors.yellow),
+        expressionColor: Colors.indigo,
+        expressionStyle: TextStyle(fontSize: 20, color: Colors.white),
+        operatorColor: Colors.pink,
+        operatorStyle: TextStyle(fontSize: 30, color: Colors.white),
+        commandColor: Colors.orange,
+        commandStyle: TextStyle(fontSize: 30, color: Colors.white),
+        numColor: Colors.grey,
+        numStyle: TextStyle(fontSize: 50, color: Colors.white),
+      ),
+    );
+    return OutlinedButton(
+      child: Text(_currentValue.toString()),
+      onPressed: () {
+        showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (BuildContext context) {
+              return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: calc);
+            });
+      },
+    );
+  }
+}
+
+class CalcButton extends StatefulWidget {
+  const CalcButton({Key? key}) : super(key: key);
+
+  @override
+  CalcButtonState createState() => CalcButtonState();
 }
